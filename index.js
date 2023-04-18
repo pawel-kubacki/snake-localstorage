@@ -42,9 +42,7 @@ const gameBeginning = () => {
 	} else if (JSON.parse(localStorage.getItem('playersScores'))) {
 		let getPlayersScoresArray = JSON.parse(localStorage.getItem('playersScores'))
 		for (i = 0; i < getPlayersScoresArray.length; i++) {
-			if (getPlayersScoresArray[i].playerName === "" && getPlayersScoresArray[i].playerScore === "" && getPlayersScoresArray[i].playerLevel === "") {
-				// localStorage.removeItem("playersScores" == getPlayersScoresArray[i]);
-			} else if (getPlayersScoresArray[i].playerScore > 0 || getPlayersScoresArray[i].playerScore < Infinity) {
+			if (getPlayersScoresArray[i].playerScore > 0 || getPlayersScoresArray[i].playerScore < Infinity) {
 				history.innerHTML += "<p>" + "<span>" + "Imię gracza: " + "</span>" + "<span>" + "<strong>" + `${getPlayersScoresArray[i].playerName}` + "</strong>" + "." + "</span>" + "<span>" + "Punkty: " + "<strong>" + ` ${getPlayersScoresArray[i].playerScore}` + "</strong>" + "." + "</span>" + "<span>" + "Poziom: " + "<strong>" + `${getPlayersScoresArray[i].playerLevel}` + "</strong>" + "." + "</span>" + "</p>"
 			}
 		}
@@ -262,6 +260,7 @@ window.addEventListener("keydown", (event) => {
 		case 39: if (vector !== 39 && vector !== 37) { vector = x }; break;
 		case 13: if (gameOverDiv.style.visibility === "visible") { save() } else if (play === "off" && start.style.visibility === "hidden") { play = "on"; pauza.style.display = 'none'; mainFunction(play) }; break;
 		case 32: if (play === "on" && start.style.visibility === "hidden") { play = "off"; pauza.style.display = 'inline'; mainFunction(play) }; break;
+		// case 83: if (gameOverDiv.style.visibility === "visible") { save() }; break;
 	}
 })
 window.addEventListener("load", gameBeginning);
